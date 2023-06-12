@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS versions
     user_id     bigint not null,
     CONSTRAINT  uniq_version_user_id UNIQUE (version, user_id),
     CONSTRAINT  versions_users_id_fkey FOREIGN KEY (user_id) REFERENCES users (id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS cards
 (
@@ -32,7 +32,7 @@ create table if not exists accounts
     user_id     bigint not null,
     login       varchar(255),
     password    varchar(255),
-    metadata     varchar(255),
+    metadata    varchar(255),
     CONSTRAINT  accounts_users_id_fkey FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
@@ -41,7 +41,7 @@ create table if not exists notes
     id          bigserial primary key,
     user_id     bigint not null,
     text        varchar(255),
-    metadata     varchar(255),
+    metadata    varchar(255),
     CONSTRAINT  notes_users_id_fkey FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
@@ -50,6 +50,6 @@ create table if not exists binary
     id          bigserial primary key,
     user_id     bigint not null,
     body        bytea,
-    metadata     varchar(255),
-    CONSTRAINT binary_users_id_fkey FOREIGN KEY (user_id) REFERENCES users (id)
+    metadata    varchar(255),
+    CONSTRAINT  binary_users_id_fkey FOREIGN KEY (user_id) REFERENCES users (id)
 );

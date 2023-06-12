@@ -45,11 +45,10 @@ func (h *Handler) InitRoutes() *chi.Mux {
 	// Protected routes
 	r.Group(func(r chi.Router) {
 		r.Use(Authenticator)
-		r.Post("/api/user/cards", h.CreateCard)
-		r.Get("/api/user/orders", h.GetOrders)
-		r.Get("/api/user/balance", h.GetBalance)
-		r.Post("/api/user/balance/withdraw", h.Withdraw)
-		r.Get("/api/user/withdrawals", h.Withdrawals)
+		r.Get("/api/user/sync", h.SyncHandler)
+		r.Post("/api/user/create", h.CreateHandler)
+		r.Post("/api/user/update", h.UpdateHandler)
+		r.Post("/api/user/delete", h.DeleteHandler)
 	})
 	return r
 }

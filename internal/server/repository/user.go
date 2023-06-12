@@ -43,7 +43,7 @@ func (u *UserRepository) Create(ctx context.Context, user *model.User) error {
 }
 func (u *UserRepository) GetByLogin(ctx context.Context, login string) (*model.User, error) {
 	var user model.User
-	err := u.db.Get(&user, "SELECT login, password_hash FROM users WHERE login = $1", login)
+	err := u.db.Get(&user, "SELECT id,login, password_hash FROM users WHERE login = $1", login)
 	if err != nil && !errors.Is(err, sql.ErrNoRows) {
 		return nil, err
 	}
